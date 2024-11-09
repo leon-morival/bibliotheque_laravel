@@ -9,12 +9,20 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
-        Schema::table('books', function (Blueprint $table) {
-            //
-        });
+        if (!Schema::hasTable('books')) {
+            Schema::create('books', function (Blueprint $table) {
+                $table->id('book_id');
+                $table->string('title', 100);
+                $table->string('author', 100);
+                $table->year('year');
+                $table->boolean('available')->default(true);
+                $table->timestamps();
+            });
+        }
     }
+    
 
     /**
      * Reverse the migrations.
