@@ -30,4 +30,17 @@ class BookController extends Controller
 
         return redirect()->route('books.create')->with('success', 'Livre ajouté avec succès !');
     }
+    public function index()
+    {
+        $books = Book::all();
+    
+        if ($books->isEmpty()) {
+            // Ajouter un message d'erreur à la session
+            session()->flash('error', 'Aucun livre n\'a été trouvé.');
+        }
+    
+        return view('books.index', compact('books'));
+    }
+    
+
 }

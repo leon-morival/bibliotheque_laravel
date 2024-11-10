@@ -20,6 +20,9 @@
                     <x-nav-link :href="route('books.create')" :active="request()->routeIs('books.create')">
                         {{ __('Ajouter un livre') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('books.index')" :active="request()->routeIs('books.index')">
+                        {{ __('Livres') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -86,6 +89,9 @@
             <!-- Ajouter un livre -->
             <x-nav-link :href="route('books.create')" :active="request()->routeIs('books.create')">
                 {{ __('Ajouter un livre') }}
+            </x-nav-link>
+            <x-nav-link :href="route('books.index')" :active="request()->routeIs('books.index')">
+                {{ __('Livres') }}
             </x-nav-link>
         </div>
 
