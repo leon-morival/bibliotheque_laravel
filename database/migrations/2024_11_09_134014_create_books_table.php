@@ -13,10 +13,10 @@ return new class extends Migration
     {
         if (!Schema::hasTable('books')) {
             Schema::create('books', function (Blueprint $table) {
-                $table->id('book_id');
+                $table->id();
                 $table->string('title', 100);
                 $table->string('author', 100);
-                $table->year('year');
+                $table->integer('year');
                 $table->boolean('available')->default(true);
                 $table->timestamps();
             });

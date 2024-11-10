@@ -16,8 +16,8 @@ class BookController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'author' => 'required|string|max:255',
-            'year' => 'required|integer|min:1000|max:9999',
-            'available' => 'boolean',
+            'year' => 'required|integer|min:0|max:9999',
+            'available' => 'nullable',
         ]);
 
         // Création du livre

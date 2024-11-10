@@ -20,7 +20,7 @@ return new class extends Migration
     
             // Définition des clés étrangères avec des références aux colonnes appropriées
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('book_id')->references('book_id')->on('books')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('book_id')->references('id')->on('books')->onDelete('cascade')->onUpdate('cascade');
     
             $table->timestamps();
         });
