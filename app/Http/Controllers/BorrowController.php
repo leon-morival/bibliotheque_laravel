@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use App\Models\Borrow;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class BorrowController extends Controller
 {
@@ -28,12 +30,36 @@ class BorrowController extends Controller
 
     public function returnBook(Borrow $borrow)
     {
-        $borrow->update([
-            'return_date' => now(),
-        ]);
-
+        $borrow->return_date = now();
+        
         $borrow->book->update(['available' => true]);
-
-        return redirect()->route('books.index')->with('success', 'Livre retourné avec succès !');
+        
+        $borrow->save();
+        
+        return redirect()->route('profile.borrowed-books')->with('success', 'Livre rendu avec succès !');
     }
+    
+    
+    
+    
+    
+
+    public function index()
+    {
+        $user = Auth::user();
+     
+    
+        $borrows = Borrow::where('user_id', $user->id)
+        ->whereNull('return_date')  
+        ->with('book') 
+        ->get();
+
+        foreach ($borrows as $borrow) {
+            $borrow->borrow_date = Carbon::parse($borrow->borrow_date);
+            $borrow->return_date = Carbon::parse($borrow->return_date);
+        }    
+        return view('profile.borrowed-books', compact('borrows'));
+    }
+    
+
 }

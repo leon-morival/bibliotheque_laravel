@@ -10,4 +10,11 @@ class Book extends Model
     use HasFactory;
 
     protected $fillable = ['title', 'author', 'year', 'available'];
+// app/Models/Book.php
+
+public function borrows()
+{
+    return $this->hasMany(Borrow::class, 'book_id');
+}
+
 }
