@@ -16,7 +16,10 @@ Avant de commencer, assurez-vous que vous avez les éléments suivants installé
 1. **Clonez le dépôt :**
 
     ```bash
-    git clone https://github.com/username/repo-name.git
+    ssh
+    git clone git@github.com:leon-morival/bibliotheque_laravel.git
+    http
+    git clone https://github.com/leon-morival/bibliotheque_laravel.git
     cd repo-name
     ```
 
@@ -40,7 +43,7 @@ Avant de commencer, assurez-vous que vous avez les éléments suivants installé
         cp .env.example .env
         ```
 
-    - Modifiez le fichier `.env` pour configurer les informations de la base de données (DB_DATABASE, DB_USERNAME, DB_PASSWORD).
+    - Modifiez le fichier `.env` pour configurer les informations de la base de données
 
 5. **Générez la clé de l'application :**
 
@@ -48,10 +51,10 @@ Avant de commencer, assurez-vous que vous avez les éléments suivants installé
     php artisan key:generate
     ```
 
-6. **Exécutez les migrations et ajoutez les données de base :**
+6. **Exécutez les migrations :**
 
     ```bash
-    php artisan migrate --seed
+    php artisan migrate
     ```
 
 ## Démarrage du projet
@@ -62,7 +65,7 @@ Avant de commencer, assurez-vous que vous avez les éléments suivants installé
     php artisan serve
     ```
 
-2. **Compilez les assets front-end (CSS/JS) :**
+2. **Compilez les assets front-end :**
 
     - Pour le mode de développement :
 
@@ -70,15 +73,7 @@ Avant de commencer, assurez-vous que vous avez les éléments suivants installé
         npm run dev
         ```
 
-    - Pour le mode de production :
-
-        ```bash
-        npm run build
-        ```
-
 ## Utilisation
 
 -   **Utilisateur normal** : Un utilisateur inscrit peut emprunter et rendre des livres.
 -   **Administrateur** : L'administrateur peut ajouter, modifier et supprimer des livres.
-
-> **Note :** Un utilisateur peut être défini comme administrateur en modifiant son rôle dans la base de données (`role = admin`).
