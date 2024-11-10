@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role'
     ];
 
     /**
@@ -45,11 +46,14 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-// app/Models/User.php
 
-public function borrows()
-{
-    return $this->hasMany(Borrow::class, 'user_id');
-}
+    public function isAdmin()
+    {
+        return $this->role === 'admin';
+    }
+    public function borrows()
+    {
+        return $this->hasMany(Borrow::class, 'user_id');
+    }
 
 }

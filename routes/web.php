@@ -24,7 +24,7 @@ Route::post('/books', [BookController::class, 'store'])->name('books.store');
 Route::post('/books/{book}/borrow', [BorrowController::class, 'borrow'])
     ->name('borrow.book')
     ->middleware('auth');  
-    Route::put('/borrows/{borrow}/return', [BorrowController::class, 'returnBook'])->name('borrow.return');
+Route::put('/borrows/{borrow}/return', [BorrowController::class, 'returnBook'])->name('borrow.return');
 
 
 Route::middleware('auth')->group(function () {

@@ -32,12 +32,13 @@
                             </td>
 
                             <td class="px-4 py-2 text-center">
-                                <p>URL de la route : {{ route('borrow.return', $borrow) }}</p>
 
-                                <form action="{{ route('borrow.return', $borrow) }}" method="POST">
+                                <form action="{{ route('borrow.return', $borrow) }}" method="POST"
+                                    onsubmit="confirm('Voulez vous vraiment retourner ce livre')">
                                     @csrf
                                     @method('PUT')
-                                    <button type="submit">Rendre</button>
+                                    <button type="submit"
+                                        class="bg-black text-white rounded p-1 hover:bg-gray-900">Rendre</button>
                                 </form>
 
 

@@ -37,7 +37,7 @@
                                 <form action="{{ route('borrow.book', $book) }}" method="POST" class="mt-4">
                                     @csrf
                                     <button type="submit"
-                                        class="w-full py-2 px-4 bg-blue-600 text-white font-bold rounded hover:bg-blue-700">
+                                        class="w-full py-2 px-4 bg-blue-500 text-white font-bold rounded hover:bg-blue-600">
                                         Emprunter ce livre
                                     </button>
                                 </form>
