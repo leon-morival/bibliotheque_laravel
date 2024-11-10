@@ -20,12 +20,22 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 @foreach ($books as $book)
                     <div class="bg-white shadow-lg rounded-lg overflow-hidden">
-                        <div class="p-6">
-                            <h2 class="text-xl font-semibold text-gray-800 mb-2">{{ $book->title }}</h2>
-                            <p class="text-gray-600 mb-2"><strong>Auteur:</strong> {{ $book->author }}</p>
-                            <p class="text-gray-500 mb-4"><strong>Année:</strong> {{ $book->year }}</p>
+                        <!-- Affichage de la couverture du livre -->
+                        @if ($book->cover_image)
+                            <img src="{{ asset('storage/' . $book->cover_image) }}"
+                                alt="Couverture de {{ $book->title }}" class="w-full h-96	 object-cover">
+                        @else
+                            <div class="w-full h-48 bg-gray-300 flex items-center justify-center text-gray-600">
+                                Pas d'image
+                            </div>
+                        @endif
 
-                            <div class="flex items-center mb-4">
+                        <div class="p-6">
+                            <h2 class="text-xl font-semibold text-gray-800 mb-1">{{ $book->title }}</h2>
+                            <p class="text-gray-600 mb-1"><strong>Auteur:</strong> {{ $book->author }}</p>
+                            <p class="text-gray-500 mb-1"><strong>Année:</strong> {{ $book->year }}</p>
+
+                            <div class="flex items-center mb-1">
                                 <span class="text-sm font-medium text-gray-700 mr-2">Disponible:</span>
                                 <span
                                     class="text-sm font-bold {{ $book->available ? 'text-green-600' : 'text-red-600' }}">
@@ -34,7 +44,7 @@
                             </div>
 
                             @if ($book->available)
-                                <form action="{{ route('borrow.book', $book) }}" method="POST" class="mt-4">
+                                <form action="{{ route('borrow.book', $book) }}" method="POST">
                                     @csrf
                                     <button type="submit"
                                         class="w-full py-2 px-4 bg-blue-500 text-white font-bold rounded hover:bg-blue-600">

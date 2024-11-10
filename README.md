@@ -15,10 +15,15 @@ Avant de commencer, assurez-vous que vous avez les éléments suivants installé
 
 1. **Clonez le dépôt :**
 
-    ```bash
     ssh
+
+    ```bash
     git clone git@github.com:leon-morival/bibliotheque_laravel.git
+    ```
+
     http
+
+    ```bash
     git clone https://github.com/leon-morival/bibliotheque_laravel.git
     cd repo-name
     ```
@@ -67,11 +72,9 @@ Avant de commencer, assurez-vous que vous avez les éléments suivants installé
 
 2. **Compilez les assets front-end :**
 
-    - Pour le mode de développement :
-
-        ```bash
-        npm run dev
-        ```
+    ```bash
+    npm run dev
+    ```
 
 ## Utilisation
 
