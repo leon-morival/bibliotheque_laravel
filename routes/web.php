@@ -23,7 +23,10 @@ Route::post('/books', [BookController::class, 'store'])->name('books.store');
 Route::delete('/books/{book}', [BookController::class, 'destroy'])
     ->name('books.destroy')
     ->middleware(['auth']);  
+    Route::get('/books/{book}/edit', [BookController::class, 'edit'])->name('books.edit');
 
+    // Route pour mettre à jour les informations du livre
+    Route::patch('/books/{book}', [BookController::class, 'update'])->name('books.update');
 // emprunt de livres
 Route::post('/books/{book}/borrow', [BorrowController::class, 'borrow'])
     ->name('borrow.book')

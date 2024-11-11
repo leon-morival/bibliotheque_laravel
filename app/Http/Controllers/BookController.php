@@ -55,6 +55,33 @@ class BookController extends Controller
     return redirect()->route('books.index')->with('success', 'Livre supprimé avec succès !');
 }
 
-    
+public function edit(Book $book)
+{
+    return view('books.edit', compact('book'));
+}
+
+public function update(Request $request, Book $book)
+{
+    $request->validate([
+        'title' => 'required|string|max:255',
+        'author' => 'required|string|max:255',
+        'year' => 'required|integer|min:1000|max:9999',
+        'cover_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        'available' => 'nullable',
+    ]);
+    $data = [
+        'title' => $request->input('title'),
+        'author' => $request->input('author'),
+        'year' => $request->input('year'),
+        'available' => $request->has('available') ? 1 : 0, 
+    ];
+    if ($request->hasFile('cover_image')) {
+        $path = $request->file('cover_image')->store('covers', 'public');
+        $data['cover_image'] = $path;
+    }
+    $book->update($data);
+
+    return redirect()->route('books.index')->with('success', 'Livre mis à jour avec succès.');
+}
 
 }

@@ -23,7 +23,7 @@
                         <!-- Affichage de la couverture du livre -->
                         @if ($book->cover_image)
                             <img src="{{ asset('storage/' . $book->cover_image) }}"
-                                alt="Couverture de {{ $book->title }}" class="w-auto h-100	 object-cover">
+                                alt="Couverture de {{ $book->title }}" class="w-auto h-100 object-cover">
                         @else
                             <div class="w-full h-48 bg-gray-300 flex items-center justify-center text-gray-600">
                                 Pas d'image
@@ -57,6 +57,13 @@
                                     Livre déjà emprunté
                                 </button>
                             @endif
+                            @if (auth()->user() && auth()->user()->role === 'admin')
+                                <a href="{{ route('books.edit', $book) }}"
+                                    class="w-full py-2 px-4 bg-yellow-500 text-white font-bold rounded hover:bg-yellow-600 mt-4">
+                                    Modifier
+                                </a>
+                            @endif
+
                             @if (auth()->user() && auth()->user()->role === 'admin')
                                 <form action="{{ route('books.destroy', $book) }}" method="POST"
                                     onsubmit="return confirm('Voulez-vous vraiment supprimer ce livre ?');">
