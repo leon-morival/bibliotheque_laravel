@@ -18,6 +18,9 @@ class BorrowController extends Controller
                 'user_id' => Auth::id(),
                 'book_id' => $book->id,
                 'borrow_date' => now(),
+                'return_date' => now()->addDays(7),
+              
+
             ]);
 
             $book->update(['available' => false]);
@@ -50,8 +53,9 @@ class BorrowController extends Controller
      
     
         $borrows = Borrow::where('user_id', $user->id)
-        ->whereNull('return_date')  
-        ->with('book') 
+        ->where('borrow_date', '<=', Carbon::now())
+        ->where('return_date', '>=', Carbon::now())
+        ->with('book')
         ->get();
 
         foreach ($borrows as $borrow) {

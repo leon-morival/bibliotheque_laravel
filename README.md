@@ -80,3 +80,10 @@ Avant de commencer, assurez-vous que vous avez les éléments suivants installé
 
 -   **Utilisateur normal** : Un utilisateur inscrit peut emprunter et rendre des livres.
 -   **Administrateur** : L'administrateur peut ajouter, modifier et supprimer des livres.
+
+lorsqu'un utilisateur est supprimé ses livres empruntés sont de nouveaux disponible et la date de retour est défini au moment de la suppression
+
+A faire
+
+Afficher quand le livre sera dispo
+Icon de poubelle pour la suppression

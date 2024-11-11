@@ -16,5 +16,9 @@ public function borrows()
 {
     return $this->hasMany(Borrow::class, 'book_id');
 }
-
+public function markAsAvailable()
+{
+    $this->available = true;
+    $this->save();
+}
 }

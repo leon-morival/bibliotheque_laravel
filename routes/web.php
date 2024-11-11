@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\BorrowController;
+use App\Http\Controllers\UserController;
 Route::get('/', function () {
     return view('welcome');
 });
@@ -19,12 +20,23 @@ Route::middleware('auth')->group(function () {
 Route::get('/books', [BookController::class, 'index'])->name('books.index');
 Route::get('/books/create', [BookController::class, 'create'])->name('books.create');
 Route::post('/books', [BookController::class, 'store'])->name('books.store'); 
+Route::delete('/books/{book}', [BookController::class, 'destroy'])
+    ->name('books.destroy')
+    ->middleware(['auth']);  
 
 // emprunt de livres
 Route::post('/books/{book}/borrow', [BorrowController::class, 'borrow'])
     ->name('borrow.book')
     ->middleware('auth');  
 Route::put('/borrows/{borrow}/return', [BorrowController::class, 'returnBook'])->name('borrow.return');
+
+// Routes pour afficher et gérer les utilisateurs
+Route::middleware('auth')->group(function () {
+    Route::get('/users', [UserController::class, 'index'])->name('users.index');
+    Route::patch('/users/{user}/update-role', [UserController::class, 'updateRole'])->name('users.updateRole');
+});
+// Route pour supprimer un utilisateur
+Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
 
 
 Route::middleware('auth')->group(function () {

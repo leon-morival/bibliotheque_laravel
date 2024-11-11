@@ -42,9 +42,10 @@
                 </div>
                 <div class="mb-4">
                     <label for="cover_image" class="block text-sm font-medium text-gray-700">Image de couverture</label>
-                    <input type="file" name="cover_image" id="cover_image" class="mt-1 block w-full"
-                        accept="image/*">
+                    <input type="file" name="cover_image" id="cover_image"
+                        class="mt-1 block w-full text-sm text-slate-800  rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 file:border file:border-gray-300 file:rounded-lg file:px-4 file:py-2 file:text-sm file:font-semibold file:bg-gray-50 hover:file:bg-gray-100">
                 </div>
+
                 <div class="mb-4 flex items-center">
                     <input class="h-4 w-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500" id="available"
                         name="available" type="checkbox">
@@ -55,7 +56,7 @@
 
                 <button type="submit"
                     class="w-full py-2 px-4 bg-black text-white font-bold rounded hover:bg-indigo-700 focus:outline-none focus:shadow-outline">
-                    Ajouter le livre
+                    Ajouter un livre
                 </button>
             </form>
         </div>
