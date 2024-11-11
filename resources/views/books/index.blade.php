@@ -20,7 +20,6 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 @foreach ($books as $book)
                     <div class="bg-white shadow-lg rounded-lg overflow-hidden">
-                        <!-- Affichage de la couverture du livre -->
                         @if ($book->cover_image)
                             <img src="{{ asset('storage/' . $book->cover_image) }}"
                                 alt="Couverture de {{ $book->title }}" class="w-auto h-100 object-cover">
@@ -57,10 +56,11 @@
                                     Livre déjà emprunté
                                 </button>
                             @endif
+
                             @if (auth()->user() && auth()->user()->role === 'admin')
                                 <a href="{{ route('books.edit', $book) }}"
-                                    class="w-full py-2 px-4 bg-yellow-500 text-white font-bold rounded hover:bg-yellow-600 mt-4">
-                                    Modifier
+                                    class="w-full py-2 px-4 bg-yellow-500 text-white font-bold rounded hover:bg-yellow-600 mt-4 flex items-center justify-center">
+                                    <i class="fas fa-edit mr-2"></i> Modifier
                                 </a>
                             @endif
 
@@ -70,8 +70,8 @@
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit"
-                                        class="w-full py-2 px-4 bg-red-500 text-white font-bold rounded hover:bg-red-600 mt-4">
-                                        Supprimer
+                                        class="w-full py-2 px-4 bg-red-500 text-white font-bold rounded hover:bg-red-600 mt-4 flex items-center justify-center">
+                                        <i class="fas fa-trash mr-2"></i> Supprimer
                                     </button>
                                 </form>
                             @endif

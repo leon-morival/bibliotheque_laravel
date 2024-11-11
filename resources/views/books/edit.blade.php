@@ -10,7 +10,7 @@
 
         <form action="{{ route('books.update', $book) }}" method="POST" enctype="multipart/form-data">
             @csrf
-            @method('PATCH') <!-- La méthode PATCH pour la mise à jour -->
+            @method('PATCH')
 
             <div class="mb-4">
                 <label for="title" class="block text-gray-700">Titre</label>
@@ -36,7 +36,7 @@
                 @if ($book->cover_image)
                     <p class="mt-2">Image actuelle :</p>
                     <img src="{{ asset('storage/' . $book->cover_image) }}" alt="Couverture actuelle"
-                        class="w-32 h-32 object-cover">
+                        class="h-48 object-cover">
                 @endif
             </div>
 
