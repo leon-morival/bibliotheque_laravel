@@ -26,8 +26,16 @@
 
             <div class="mb-4">
                 <label for="year" class="block text-gray-700">Année</label>
-                <input type="number" name="year" id="year" value="{{ old('year', $book->year) }}"
-                    class="w-full border p-2 rounded" required>
+                <select
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    id="year" name="year" required>
+                    @php
+                        $currentYear = \Carbon\Carbon::now()->year;
+                    @endphp
+                    @for ($year = $currentYear; $year >= 1700; $year--)
+                        <option value="{{ $year }}">{{ $year }}</option>
+                    @endfor
+                </select>
             </div>
 
             <div class="mb-4">

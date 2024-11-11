@@ -49,19 +49,6 @@ Ce projet est une application Laravel pour la gestion d'une bibliothèque, perme
     -   **Utilisateur normal** : Peut uniquement emprunter et retourner des livres.
     -   **Administrateur** : Peut ajouter, modifier, supprimer des livres et gérer les utilisateurs.
 
--   **Protection des routes** : Certaines actions (ajouter, modifier, supprimer des livres) sont réservées aux administrateurs, grâce à une gestion des rôles et de l'autorisation.
-
-### 6. **Gestion des erreurs et des messages de confirmation**
-
--   **Messages de succès** : Les utilisateurs et administrateurs reçoivent des messages de confirmation après l'ajout, la modification, ou la suppression d'un livre.
--   **Messages d'erreur** : Si une action échoue (par exemple, une tentative de suppression de livre échouée ou l'absence d'un livre dans la bibliothèque), des messages d'erreur appropriés sont affichés.
-
-### 7. **Accessibilité et performance**
-
--   **Interface responsive** : L'interface est conçue pour être utilisée sur différents appareils (ordinateurs de bureau, tablettes, et smartphones) avec un design responsive.
-
--   **Performance** : Les opérations sont optimisées pour fonctionner de manière fluide même avec un grand nombre de livres et d'utilisateurs.
-
 ## Prérequis
 
 Avant de commencer, assurez-vous que vous avez les éléments suivants installés :
@@ -130,7 +117,12 @@ Avant de commencer, assurez-vous que vous avez les éléments suivants installé
     php artisan serve
     ```
 
-2. **Compilez les assets front-end :**
+2. **Créer le lien symbolique pour le stockage des fichiers :**
+   Laravel utilise un lien symbolique pour accéder aux fichiers stockés dans le dossier `storage/app/public`. Exécutez la commande suivante pour créer ce lien :
+    ```bash
+    php artisan storage:link
+    ```
+3. **Compilez les assets front-end :**
 
     ```bash
     npm run dev
