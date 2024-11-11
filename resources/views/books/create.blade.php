@@ -35,10 +35,16 @@
                     <label class="block text-gray-700 text-sm font-bold mb-2" for="year">
                         Année
                     </label>
-                    <input
+                    <select
                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        id="year" name="year" type="number" placeholder="Année" required min="0"
-                        required max="9999">
+                        id="year" name="year" required>
+                        @php
+                            $currentYear = \Carbon\Carbon::now()->year;
+                        @endphp
+                        @for ($year = $currentYear; $year >= 1700; $year--)
+                            <option value="{{ $year }}">{{ $year }}</option>
+                        @endfor
+                    </select>
                 </div>
                 <div class="mb-4">
                     <label for="cover_image" class="block text-sm font-medium text-gray-700">Image de couverture</label>
